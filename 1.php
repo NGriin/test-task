@@ -1,6 +1,7 @@
 <?php
 $numbers = "123456789";
 $arr = array();
+$sum = gmp_init("0");
 for ($c = 0; $c < 50; $c++){
     $rand_num = '';
     for ($i = 0; $i < 50; $i++) {
@@ -10,5 +11,9 @@ for ($c = 0; $c < 50; $c++){
     $arr[] = $rand_num;
 }
 
-$result = array_sum($arr);
-echo($result);
+
+foreach ($arr as $number) {
+    $sum = gmp_add($sum, $number);
+}
+
+echo gmp_strval($sum);
